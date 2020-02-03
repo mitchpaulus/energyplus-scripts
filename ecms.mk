@@ -5,8 +5,10 @@
 # scripts: location of this directory
 # baseline: name of the baseline idf file (example.idf)
 # weather:  name of the weather file (in.epw)
-# run:      name of the directory that the model is executed in
-#
+# run:      name of the directory that the model is executed in (run)
+
+weather ?= in.epw
+run ?= run
 
 idf_references=$(shell awk '/INCLUDE/  { print $$NF }' $(baseline))
 
