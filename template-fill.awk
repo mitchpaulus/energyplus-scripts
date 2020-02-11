@@ -1,3 +1,5 @@
+#!/usr/bin/awk -E
+
 # PURPOSE: Form fill templates
 # USAGE:
 # awk templatefile recordsfile
