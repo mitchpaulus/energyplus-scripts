@@ -36,7 +36,7 @@ BEGIN {
         printf("    autocalculate,           !- View Factor to Ground\n")
         printf("    autocalculate,           !- Number of Vertices\n")
     }
-    else if (type == 3 || type == "adiabatic")  # Adiabatic
+    else if (type == 3 || type == "adiabatic" || "raised" )  # Adiabatic
     {
         printf("Floor:Detailed,\n")
         printf("    %s Floor,               !- Name\n", zone_name)
@@ -82,6 +82,8 @@ END {
         x3 = thirdPoints[1]
         y3 = thirdPoints[2]
 
+        # Basically caluclate the area of the triangle made by the three points. If
+        # it's zero (or close enough), then the points are collinear.
         area = 0.5 * (x1 * (y2 - y3) + x2 * (y3 - y1) + x3 * (y1 - y2))
 
         if (area < 0.0000000001 && area > -0.0000000001) {

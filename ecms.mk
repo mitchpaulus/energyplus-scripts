@@ -9,6 +9,7 @@
 
 weather ?= in.epw
 run ?= run
+baseline ?= in.idf
 
 idf_references=$(shell awk '/INCLUDE/  { print $$NF }' $(baseline))
 
