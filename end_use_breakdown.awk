@@ -3,7 +3,12 @@
 # INPUT: eplusout.mtr file
 BEGIN { FS=OFS=","
     in_data = 0
-    joules_to_mmbtu = 1 / (1.0550559 * 1000000000)
+    # In order to make this match the EnergyPlus outputs,
+    # we are going to use their conversion factor that I looked up
+    # within the source code. They use a version of the Thermochemical variant.
+    # joules_to_mmbtu = 1 / (1.0550559 * 1000000000)
+    joules_to_mmbtu = 1 / (1.05435184 * 1000000000)
+
 }
 
 /End of Data Dictionary/ {
