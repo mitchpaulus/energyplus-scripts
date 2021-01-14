@@ -22,8 +22,8 @@ peak_demands=$(call make_ecm_files,_peak_demand.txt)
 
 ecm_targets=$(annual_kWhs) $(peak_demands)
 
-$(run)/in.epw : $(weather)
-	cp $< $@
+#$(run)/in.epw : $(weather)
+	#cp $< $@
 
 $(run)/$(baseline) : $(baseline) $(idf_references) $(scripts)/replace_includes.awk
 	awk -f $(scripts)/replace_includes.awk $< > $@
@@ -34,8 +34,8 @@ $(run)/ecm%_$(baseline) : $(run)/$(baseline) $(scripts)/ecm_replace.awk
 $(run)/ecm%out.mtr : $(run)/ecm%_$(baseline) $(run)/in.epw
 	cd $(run)/ && ($(exe) -p ecm$(*F) -r $(<F) || (nvim ecm$(*F)out.err && false))
 
-$(run)/%_annual_kWh.txt : $(run)/%out.mtr $(scripts)/annual_kwh.awk
-	$(scripts)/annual_kwh.awk $< > $@
+#$(run)/%_annual_kWh.txt : $(run)/%out.mtr $(scripts)/annual_kwh.awk
+	#$(scripts)/annual_kwh.awk $< > $@
 
 $(run)/%_peak_demand.txt : $(run)/%out.mtr $(scripts)/peakdemand.awk
 	awk -f $(scripts)/peakdemand.awk $< > $@

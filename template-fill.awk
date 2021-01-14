@@ -3,6 +3,8 @@
 # PURPOSE: Form fill templates
 # USAGE:
 # awk templatefile recordsfile
+# Template file is typically an idf file that has '#N' placeholders.
+# The 'templates' is a tab separated data file. For each row, a new instance of the template is created.
 BEGIN {
     FS = "\t"
     # awk program name counts as the first argument.

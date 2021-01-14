@@ -30,7 +30,7 @@ BEGIN {
 
         # inc is a passed in variable for 'including' previous ecms.
         # Many programs like to have a stacked savings approach.
-        matches_ecm = inc ? found_ecm <= ecm : found_ecm == ecm
+        matches_ecm = inc + 0 ? found_ecm <= ecm : found_ecm == ecm
 
         print (matches_ecm ? substr($0, RSTART + RLENGTH + 4) : $0)
     }

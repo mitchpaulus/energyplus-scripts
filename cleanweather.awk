@@ -1,8 +1,8 @@
 BEGIN { FS=OFS="," }
 
-# column 7 is dry bulb temperature. Remove those records
-# where the temperature is missing (999.9)
-$7 !~ /999.9/ && $1 == "2019" {
+# Only use the first value of a particular hour.
+# Don't print data with dry bulb temperature missing.
+$7 != 99.9 {
     hour = sprintf("%s-%s-%s-%s", $1, $2, $3, $4)
 
     if (!(hour in usedhours)) {

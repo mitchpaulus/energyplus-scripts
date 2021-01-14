@@ -39,7 +39,7 @@ BEGIN {
     noaa_minute = substr($0, 26, 2) + 0
 
     # Shift the hour back by a fixed amount
-    new_hour = noaa_hour - 5
+    new_hour = noaa_hour - 6
     new_day = noaa_day
     new_month = noaa_month
     new_year = noaa_year
