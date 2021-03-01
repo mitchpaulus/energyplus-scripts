@@ -1,0 +1,11 @@
+# EnergyPlus files
+
+*.audit
+*.bnd
+*.eio
+*.err
+*.mdd
+*.mtd
+*.rdd
+*.rvaudit
+*.shd
